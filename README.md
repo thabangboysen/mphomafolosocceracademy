@@ -6,7 +6,7 @@ This project is a responsive website designed to showcase the academy, its visio
 ---
 
 ## 🌍 Live Demo  
-👉 [Insert GitHub Pages / Hosting Link Here]  
+👉 [https://thabangboysen.github.io/mphomafolosocceracademy/]  
 
 ---
 
