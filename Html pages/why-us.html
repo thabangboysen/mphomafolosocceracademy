@@ -4,16 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mpho Mafolo Soccer Academy - Why Us</title>
- <link rel="stylesheet" href="/CSS/why-us.css">
+  <link rel="stylesheet" href="/CSS/why-us.css">
 </head>
 <body>
 
   <!-- HEADER -->
   <header>
-    <a href="index.html">
+    <a href="/index.html">
       <img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo">
     </a>
-    <nav>
+
+    <!-- Hamburger Button -->
+    <button class="hamburger" id="hamburger">
+      ☰
+    </button>
+
+    <nav id="navMenu">
       <ul>
         <li><a href="#">Programs</a></li>
         <li><a href="gallery.html">Gallery</a></li>
@@ -60,6 +66,17 @@
   <footer>
     <p><strong>&copy; 2025 Mpho Mafolo Soccer Academy. All rights reserved.</strong></p>
   </footer>
+
+  <!-- JavaScript for Hamburger Menu -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+  </script>
 
 </body>
 </html>
