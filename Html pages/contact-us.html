@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mpho Mafolo Soccer Academy - Contact Us</title>
+  <link rel="stylesheet" href="../CSS/contact-us.css">
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("YOUR_PUBLIC_KEY"); // replace with your EmailJS public key
+    })();
+  </script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+<a href="index.html"><img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo"></a>
+    <nav>
+      <ul>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="Support-us.html">Support Us</a></li>
+        <li><a href="why-us.html">Why Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTACT SECTION -->
+  <section class="about-section">
+    <div class="about-content">
+      <!-- LEFT SIDE -->
+      <div class="about-text">
+        <h2>Connect With Us!</h2>
+        <h3>Mpho Mafolo Soccer Academy</h3>
+        <p>eMalahleni Stadium, Evkompark 319-Js, eMalahleni</p>
+        <p><a href="mailto:mphomafolosoceracademy00@gmail.com">mphomafolosoceracademy00@gmail.com</a></p>
+
+        <!-- CONTACT FORM -->
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">NAME & SURNAME:</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error-message" id="nameError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="contact">CONTACT NR.:</label>
+            <input type="tel" id="contact" name="contact" required pattern="[0-9]{10}">
+            <span class="error-message" id="contactError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-MAIL:</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error-message" id="emailError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="message">MESSAGE:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <span class="error-message" id="messageError"></span>
+          </div>
+
+          <button type="submit" class="submit-btn">SUBMIT</button>
+        </form>
+      </div>
+
+      <!-- RIGHT SIDE MAP -->
+      <div class="map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7924.81130054589!2d29.256719!3d-25.874569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eb0569d2fccca3f%3A0xa2e2b523a6ac02f6!2sPuma%20Stadium%20(Witbank%20Stadium)%2C%20eMalahleni%2C%20Mpumalanga%2C%20South%20Africa!5e0!3m2!1sen!2sza!4v1694963240000!5m2!1sen!2sza" 
+          allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>&copy; 2025 Mpho Mafolo Soccer Academy. All rights reserved.</strong></p>
+  </footer>
+
+  <!-- FORM VALIDATION & EMAILJS SCRIPT -->
+  <script>
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+      document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
+
+      const name = document.getElementById('name');
+      const contact = document.getElementById('contact');
+      const email = document.getElementById('email');
+      const message = document.getElementById('message');
+
+      if(name.value.trim() === '') { document.getElementById('nameError').textContent = 'Please enter your name.'; valid=false;}
+      if(contact.value.trim() === '') { document.getElementById('contactError').textContent = 'Please enter your contact number.'; valid=false;}
+      else if(!/^\d{10}$/.test(contact.value.trim())) { document.getElementById('contactError').textContent='Contact number must be 10 digits.'; valid=false;}
+      if(email.value.trim() === '') { document.getElementById('emailError').textContent='Please enter your email.'; valid=false;}
+      else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { document.getElementById('emailError').textContent='Please enter a valid email address.'; valid=false;}
+      if(message.value.trim() === '') { document.getElementById('messageError').textContent='Please enter your message.'; valid=false;}
+
+      if(valid) {
+        emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+          name: name.value,
+          email: email.value,
+          contact: contact.value,
+          message: message.value
+        })
+        .then(function(response) {
+          alert("You sent the email successfully!");
+          form.reset();
+        }, function(error) {
+          alert("Oops! Something went wrong. Please try again.");
+          console.log(error);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

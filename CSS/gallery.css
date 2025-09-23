@@ -1,0 +1,208 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: url("../pictures & videos/WhatsApp Image 2025-09-21 at 20.34.56_ea3a25b5.jpg") no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+/* Dark overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* HEADER NAVBAR */
+header {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+header img {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 10px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #00BFFF;
+  text-shadow: 0 0 10px #00BFFF;
+}
+
+/* GALLERY SECTION */
+.gallery-section {
+  padding: 150px 20px 50px;
+  flex: 1 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  font-size: 4em;
+  font-weight: bold;
+  background: linear-gradient(90deg, #00BFFF, #1E90FF, #4169E1, #00BFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+  animation: glow 2s ease-in-out infinite alternate;
+  margin-bottom: 15px;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #00BFFF, 0 0 10px #1E90FF, 0 0 15px #4169E1; }
+  50% { text-shadow: 0 0 15px #00BFFF, 0 0 25px #1E90FF, 0 0 35px #4169E1; }
+  100% { text-shadow: 0 0 5px #00BFFF, 0 0 10px #1E90FF, 0 0 15px #4169E1; }
+}
+
+/* Underline animation */
+.gallery-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #00BFFF, #1E90FF, #4169E1);
+  border-radius: 5px;
+  animation: underline 2s infinite alternate;
+}
+
+@keyframes underline {
+  0% { width: 0; }
+  50% { width: 60%; }
+  100% { width: 80%; }
+}
+
+.gallery-section h3 {
+  margin-bottom: 40px;
+  font-weight: normal;
+  font-size: 1.3em;
+  color: #ffffff;
+  text-shadow: 0 0 5px #000;
+}
+
+/* Gallery grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 200px;
+  gap: 20px;
+  justify-items: center;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  animation: popAndBounce 1s ease-in-out;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 191, 255, 0.8);
+}
+
+@keyframes popAndBounce {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  75% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* Footer */
+footer {
+  background-color: #001f3f;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  nav ul {
+    gap: 10px;
+  }
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery-section h2 {
+    font-size: 3em;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 250px;
+  }
+  .gallery-section h2 {
+    font-size: 2.5em;
+  }
+  .gallery-section h3 {
+    font-size: 1.1em;
+  }
+}
