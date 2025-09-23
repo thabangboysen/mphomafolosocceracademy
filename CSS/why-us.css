@@ -39,46 +39,51 @@ header img {
   height: 60px;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
+    
+    nav {
+      display: flex;
+      align-items: center;
+    }
 
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1em;
-  display: flex;
-  font-weight: bold;  
-  align-items: center;
-  height: 60px;
-  padding: 0 10px;
-  box-sizing: border-box;
-  transition: color 0.3s, text-shadow 0.3s;
-}
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
 
-nav ul li a:hover {
-  color: #00BFFF;
-  text-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF;
-}
+    nav ul li a {
+      color: white; 
+      text-decoration: none; 
+      font-size: 1.1em; 
+      font-weight: bold;
+      padding: 10px 15px; 
+      transition: color 0.3s, text-shadow 0.3s;
+    }
 
-/* ===============================
-   HAMBURGER MENU (MOBILE)
-   =============================== */
-.hamburger {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  z-index: 1000;
-}
+    nav ul li a:hover { 
+      color: #00BFFF; 
+      text-shadow: 0 0 15px #00BFFF; 
+    }
 
-#navMenu {
-  transition: all 0.3s ease;
-}
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 2px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+
 
 /* ===============================
    WHY US SECTION
