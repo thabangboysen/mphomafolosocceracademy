@@ -20,52 +20,45 @@ body {
    HEADER / NAVBAR
    =============================== */
 header {
-      position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      background-color: rgba(0,0,0,0.6);
-      padding: 10px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      box-shadow: 0 0 20px #00BFFF;
-      backdrop-filter: blur(5px);
-      animation: glowPulse 2.5s infinite alternate;
-    }
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 0 20px #00BFFF;
+  transition: box-shadow 0.3s ease-in-out;
+}
 
 header img {
   height: 60px;
+  max-width: 100%;
 }
 
-    
-    nav {
-      display: flex;
-      align-items: center;
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* prevents breaking */
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
 
-    nav ul li a {
-      color: white; 
-      text-decoration: none; 
-      font-size: 1.1em; 
-      font-weight: bold;
-      padding: 10px 15px; 
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-
-    nav ul li a:hover { 
-      color: #00BFFF; 
-      text-shadow: 0 0 15px #00BFFF; 
-    }
-
+nav ul li a:hover {
+  color: #00BFFF;
+  text-shadow: 0 0 15px #00BFFF;
+}
     /* Mobile menu toggle */
     .menu-toggle {
       display: none;
@@ -82,9 +75,6 @@ header img {
       transition: 0.3s;
       border-radius: 2px;
     }
-
-
-
 /* ===============================
    WHY US SECTION
    =============================== */
