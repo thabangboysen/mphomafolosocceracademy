@@ -31,7 +31,7 @@
     <section class="support-section animated-section">
       <h1>DONATION</h1>
       <p>Support our kids in South Africa</p>
-      <a href="https://wa.me/27686984744" class="btn" target="_blank">Donate Now</a>
+      <a href="https://wa.me/27686984744" class="btn" target="_blank">Donate</a>
     </section>
 
     <!-- WHY SECTION -->
@@ -138,53 +138,16 @@
       }
     });
 
-    // Enhanced scroll animations with stagger effect
+    // Scroll animations
     const sections = document.querySelectorAll('.animated-section');
     const observer = new IntersectionObserver(entries => {
-      entries.forEach((entry, index) => {
+      entries.forEach(entry => {
         if(entry.isIntersecting){
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, index * 200); // Stagger animation
+          entry.target.classList.add('visible');
         }
       });
-    }, { 
-      threshold: 0.1,
-      rootMargin: '50px'
-    });
-    
+    }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
-
-    // Add scroll-triggered parallax effect
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const parallaxElements = document.querySelectorAll('.social-section::before');
-      
-      parallaxElements.forEach(el => {
-        const rate = scrolled * -0.5;
-        el.style.transform = `translate3d(0, ${rate}px, 0)`;
-      });
-    });
-
-    // Add floating animation to cards
-    document.querySelectorAll('.benefits-item, .usage-item').forEach((card, index) => {
-      card.style.animationDelay = `${index * 0.2}s`;
-      card.style.animation = 'float 6s ease-in-out infinite';
-    });
-
-    // CSS for floating animation
-    const floatingKeyframes = `
-      @keyframes float {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        25% { transform: translateY(-10px) rotate(1deg); }
-        50% { transform: translateY(0px) rotate(0deg); }
-        75% { transform: translateY(-5px) rotate(-1deg); }
-      }
-    `;
-    
-    const style = document.createElement('style');
-    style.textContent = floatingKeyframes;
-    document.head.appendChild(style);
   </script>
 </body>
 </html>
