@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mpho Mafolo Soccer Academy - Contact Us</title>
-  <link rel="stylesheet" href="../CSS/contact-us.css">
 
   <!-- EmailJS SDK -->
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
@@ -13,18 +12,25 @@
       emailjs.init("YOUR_PUBLIC_KEY"); // replace with your EmailJS public key
     })();
   </script>
+
+ 
 </head>
 <body>
   <!-- HEADER -->
   <header>
-<a href="/index.html"><img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo"></a>
-    <nav>
+    <a href="/index.html"><img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo"></a>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav">
       <ul>
-        <li><a href="programs.html">Programs</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-        <li><a href="Support-us.html">Support Us</a></li>
-        <li><a href="why-us.html">Why Us</a></li>
+        <li><a href="programs.html" onclick="closeMenu()">Programs</a></li>
+        <li><a href="gallery.html" onclick="closeMenu()">Gallery</a></li>
+        <li><a href="contact-us.html" onclick="closeMenu()">Contact Us</a></li>
+        <li><a href="Support-us.html" onclick="closeMenu()">Support Us</a></li>
+        <li><a href="why-us.html" onclick="closeMenu()">Why Us</a></li>
       </ul>
     </nav>
   </header>
@@ -86,6 +92,41 @@
 
   <!-- FORM VALIDATION & EMAILJS SCRIPT -->
   <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+      
+      nav.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const nav = document.getElementById('nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+      
+      nav.classList.remove('active');
+      menuToggle.classList.remove('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.getElementById('nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const header = document.querySelector('header');
+      
+      if (!header.contains(event.target) && nav.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        closeMenu();
+      }
+    });
+
+    // Form validation and EmailJS
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', function(e) {
       e.preventDefault();
