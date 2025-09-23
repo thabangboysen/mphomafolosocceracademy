@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mpho Mafolo Soccer Academy - Why Us</title>
-  <link rel="stylesheet" href="/CSS/why-us.css">
+<link rel="stylesheet" href="/CSS/why-us.css">
 </head>
 <body>
 
@@ -14,18 +14,19 @@
       <img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo">
     </a>
 
-    <!-- Hamburger Button -->
-    <button class="hamburger" id="hamburger">
-      ☰
-    </button>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-    <nav id="navMenu">
+    <nav id="nav">
       <ul>
-        <li><a href="#">Programs</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-        <li><a href="support-us.html">Support Us</a></li>
-        <li><a href="why-us.html">Why Us</a></li>
+        <li><a href="#" onclick="closeMenu()">Programs</a></li>
+        <li><a href="gallery.html" onclick="closeMenu()">Gallery</a></li>
+        <li><a href="contact-us.html" onclick="closeMenu()">Contact Us</a></li>
+        <li><a href="support-us.html" onclick="closeMenu()">Support Us</a></li>
+        <li><a href="why-us.html" onclick="closeMenu()">Why Us</a></li>
       </ul>
     </nav>
   </header>
@@ -67,14 +68,39 @@
     <p><strong>&copy; 2025 Mpho Mafolo Soccer Academy. All rights reserved.</strong></p>
   </footer>
 
-  <!-- JavaScript for Hamburger Menu -->
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+      
+      nav.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    }
 
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      hamburger.classList.toggle('open');
+    function closeMenu() {
+      const nav = document.getElementById('nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+      
+      nav.classList.remove('active');
+      menuToggle.classList.remove('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.getElementById('nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const header = document.querySelector('header');
+      
+      if (!header.contains(event.target) && nav.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        closeMenu();
+      }
     });
   </script>
 
