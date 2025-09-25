@@ -71,15 +71,48 @@
       const requiredFields = ['playerName', 'dateOfBirth', 'gender', 'schoolName', 'address', 
                              'guardianName', 'guardianPhone', 'relationship', 'emergencyName', 'emergencyPhone'];
       
-      for (let field of requiredFields
+      for (let field of requiredFields) {
+        if (!registrationData[field] || registrationData[field].trim() === '') {
+          alert(`Please fill in the required field: ${field.replace(/([A-Z])/g, ' $1').trim()}`);
+          return;
+        }
+      }
 
-<!DOCTYPE html>
+      // Mock form submission (in a real scenario, send to backend)
+      const playerName = registrationData.playerName;
+      
+      alert('Registration form submitted successfully! Proceeding to payment.');
+      closeRegistrationModal();
+      
+      // Store player name for payment page
+      if (typeof(Storage) !== "undefined") {
+        localStorage.setItem('playerName', playerName);
+      }
+      
+      // In a real system, you would redirect to your actual payment page
+      // For demo purposes, this shows the concept
+      window.open('payment.html?player=' + encodeURIComponent(playerName), '_blank');
+    }
+
+    // Close menu when window is resized
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.getElementById('navMenu');
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mpho Mafolo Soccer Academy - Why Us</title>
-  <link rel="stylesheet" href="/CSS/why-us.css">
+ <link rel="stylesheet" href="/CSS/why-us.css">
 </head>
 <body>
 
@@ -98,7 +131,7 @@
         <li><a href="#">Programs</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="contact-us.html">Contact Us</a></li>
-        <li><a href="support-us.html">Support Us</a></li>
+        <li><a href="Support-us.html">Support Us</a></li>
         <li><a href="why-us.html">Why Us</a></li>
       </ul>
     </nav>
