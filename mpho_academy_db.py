@@ -449,7 +449,7 @@ db = MphoAcademyDatabase(
     host='localhost',
     database='mpho_academy', 
     user='root',
-    password='Rakgalakane@01'
+    password='Boysen@01'
 )
 
 # Web interface HTML template
