@@ -240,29 +240,24 @@ footer {
 /* Mobile */
 @media (max-width: 768px) {
   header {
-    justify-content: space-between;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.9);
     padding: 10px 20px;
   }
 
-  /* Ensure proper positioning on mobile */
-  .header-left {
-    flex: 0 0 auto;
-    justify-content: flex-start;
+  /* Hide desktop navigation on mobile */
+  .desktop-nav {
+    display: none;
   }
 
-  .header-right {
-    flex: 0 0 auto;
-    justify-content: flex-end;
-  }
-
+  /* Show hamburger menu on mobile */
   .menu-toggle {
     display: flex;
   }
 
-  /* Hide desktop navigation */
-  nav {
+  /* Mobile navigation */
+  .mobile-nav {
+    display: block;
     position: absolute;
     top: 100%;
     left: 0;
@@ -274,35 +269,41 @@ footer {
     transition: all 0.3s ease-in-out;
   }
 
-  nav.active {
+  .mobile-nav.active {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
   }
 
-  nav ul {
+  .mobile-nav ul {
+    list-style: none;
     flex-direction: column;
     padding: 20px;
     gap: 15px;
     background-color: transparent;
-    display: none;
-  }
-
-  nav.active ul {
     display: flex;
   }
 
-  nav ul li {
+  .mobile-nav ul li {
     width: 100%;
     text-align: left;
   }
 
-  nav ul li a {
+  .mobile-nav ul li a {
+    color: white;
+    text-decoration: none;
     display: block;
     padding: 15px 0;
     font-size: 1.2em;
+    font-weight: bold;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     text-align: left;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+
+  .mobile-nav ul li a:hover {
+    color: #00BFFF;
+    text-shadow: 0 0 15px #00BFFF;
   }
 
   .hero {
@@ -347,17 +348,29 @@ footer {
   </style>
 <body>
   <header>
-    <div class="header-left">
-      <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <!-- Logo on left for mobile -->
+    <a href="index.html" class="logo"><img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo"></a>
+    
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" id="desktop-nav">
+      <ul>
+        <li><a href="#">Programs</a></li>
+        <li><a href="/Html pages/gallery.html">Gallery</a></li>
+        <li><a href="/Html pages/contact-us.html">Contact Us</a></li>
+        <li><a href="/Html pages/support-us.html">Support Us</a></li>
+        <li><a href="/Html pages/why-us.html">Why Us</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Hamburger menu on right for mobile -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <div class="header-right">
-      <a href="index.html"><img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo"></a>
-    </div>
-    <nav id="nav">
+    
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="nav">
       <ul>
         <li><a href="#" onclick="closeMenu()">Programs</a></li>
         <li><a href="/Html pages/gallery.html" onclick="closeMenu()">Gallery</a></li>
@@ -401,7 +414,7 @@ footer {
 
   <script>
     function toggleMenu() {
-      const nav = document.getElementById('nav');
+      const nav = document.querySelector('.mobile-nav');
       const menuToggle = document.querySelector('.menu-toggle');
       
       nav.classList.toggle('active');
@@ -409,7 +422,7 @@ footer {
     }
 
     function closeMenu() {
-      const nav = document.getElementById('nav');
+      const nav = document.querySelector('.mobile-nav');
       const menuToggle = document.querySelector('.menu-toggle');
       
       nav.classList.remove('active');
@@ -418,7 +431,7 @@ footer {
 
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
-      const nav = document.getElementById('nav');
+      const nav = document.querySelector('.mobile-nav');
       const menuToggle = document.querySelector('.menu-toggle');
       const header = document.querySelector('header');
       
