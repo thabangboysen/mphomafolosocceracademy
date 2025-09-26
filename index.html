@@ -40,6 +40,15 @@ header {
   transition: box-shadow 0.3s ease-in-out;
 }
 
+/* Desktop layout - logo on left, nav on right */
+.header-left {
+  order: 1;
+}
+
+.header-right {
+  order: 2;
+}
+
 header img {
   height: 60px;
   max-width: 100%;
@@ -224,6 +233,21 @@ footer {
 
 /* Mobile */
 @media (max-width: 768px) {
+  header {
+    justify-content: space-between;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  /* Mobile layout - logo on left, hamburger on right */
+  .header-left {
+    order: 2;
+  }
+
+  .header-right {
+    order: 1;
+  }
+
   .menu-toggle {
     display: flex;
   }
@@ -233,7 +257,7 @@ footer {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: transparent;
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
@@ -250,23 +274,20 @@ footer {
     flex-direction: column;
     padding: 20px;
     gap: 15px;
+    background-color: transparent;
   }
 
   nav ul li {
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 
   nav ul li a {
     display: block;
-    padding: 10px 0;
+    padding: 15px 0;
     font-size: 1.2em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  header {
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
   }
 
   .hero {
@@ -311,11 +332,15 @@ footer {
   </style>
 <body>
   <header>
-    <a href="index.html"><img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo"></a>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="header-left">
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="index.html"><img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo"></a>
     </div>
     <nav id="nav">
       <ul>
