@@ -40,13 +40,19 @@ header {
   transition: box-shadow 0.3s ease-in-out;
 }
 
-/* Desktop layout - logo on left, nav on right */
+/* Header containers */
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
 .header-left {
-  order: 1;
+  justify-content: flex-start;
 }
 
 .header-right {
-  order: 2;
+  justify-content: flex-end;
 }
 
 header img {
@@ -237,21 +243,25 @@ footer {
     justify-content: space-between;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px 20px;
   }
 
-  /* Mobile layout - logo on left, hamburger on right */
+  /* Ensure proper positioning on mobile */
   .header-left {
-    order: 2;
+    flex: 0 0 auto;
+    justify-content: flex-start;
   }
 
   .header-right {
-    order: 1;
+    flex: 0 0 auto;
+    justify-content: flex-end;
   }
 
   .menu-toggle {
     display: flex;
   }
 
+  /* Hide desktop navigation */
   nav {
     position: absolute;
     top: 100%;
@@ -275,6 +285,11 @@ footer {
     padding: 20px;
     gap: 15px;
     background-color: transparent;
+    display: none;
+  }
+
+  nav.active ul {
+    display: flex;
   }
 
   nav ul li {
