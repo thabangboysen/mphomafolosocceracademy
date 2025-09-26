@@ -27,11 +27,11 @@ body {
 header {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 10px 30px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -56,8 +56,9 @@ header {
 }
 
 header img {
-  height: 60px;
+  height: 50px; /* Reduced size for better mobile fit */
   max-width: 100%;
+  margin-right: 10px; /* Added spacing */
 }
 
 /* HAMBURGER MENU STYLES */
@@ -72,7 +73,7 @@ header img {
   width: 25px;
   height: 3px;
   background-color: white;
-  margin: 3px 0;
+  margin: 4px 0;
   transition: 0.3s;
   border-radius: 2px;
 }
@@ -121,6 +122,7 @@ nav ul li a:hover {
   overflow: hidden;
   flex: 1;
   text-align: left;
+  margin-top: 70px; /* Adjusted to account for fixed header */
 }
 
 .hero::before {
@@ -240,15 +242,12 @@ footer {
 /* Mobile */
 @media (max-width: 768px) {
   header {
-    justify-content: space-between;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 10px 20px;
+    padding: 10px 15px; /* Reduced padding for mobile */
+    height: 60px; /* Fixed height for consistency */
   }
 
-  /* Ensure proper positioning on mobile */
   .header-left {
-    flex: 0 0 auto;
+    flex: 1;
     justify-content: flex-start;
   }
 
@@ -257,17 +256,21 @@ footer {
     justify-content: flex-end;
   }
 
+  header img {
+    height: 40px; /* Further reduced for mobile */
+    margin-right: 15px;
+  }
+
   .menu-toggle {
     display: flex;
   }
 
-  /* Hide desktop navigation */
   nav {
     position: absolute;
-    top: 100%;
+    top: 60px; /* Adjusted to start below fixed header */
     left: 0;
     width: 100%;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.9);
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
@@ -284,7 +287,7 @@ footer {
     flex-direction: column;
     padding: 20px;
     gap: 15px;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.9);
     display: none;
   }
 
@@ -309,7 +312,7 @@ footer {
     text-align: center;
     justify-content: center;
     padding: 20px;
-    margin-top: 80px;
+    margin-top: 60px; /* Adjusted to match header height */
   }
 
   .hero-content {
