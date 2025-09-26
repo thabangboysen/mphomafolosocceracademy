@@ -25,9 +25,9 @@ body {
 
 /* NAVBAR */
 header {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly darker for visibility */
   color: white;
-  padding: 10px 20px;
+  padding: 8px 15px; /* Reduced padding for compactness */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +36,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 10;
-  box-shadow: 0 0 20px #00BFFF;
+  box-shadow: 0 0 15px #00BFFF;
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -56,9 +56,9 @@ header {
 }
 
 header img {
-  height: 50px; /* Reduced size for better mobile fit */
+  height: 45px; /* Adjusted for better fit */
   max-width: 100%;
-  margin-right: 10px; /* Added spacing */
+  margin-right: 12px; /* Fine-tuned spacing */
 }
 
 /* HAMBURGER MENU STYLES */
@@ -66,11 +66,11 @@ header img {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  padding: 10px;
+  padding: 8px;
 }
 
 .menu-toggle span {
-  width: 25px;
+  width: 22px; /* Slightly reduced for compactness */
   height: 3px;
   background-color: white;
   margin: 4px 0;
@@ -122,7 +122,7 @@ nav ul li a:hover {
   overflow: hidden;
   flex: 1;
   text-align: left;
-  margin-top: 70px; /* Adjusted to account for fixed header */
+  margin-top: 65px; /* Adjusted to match header height */
 }
 
 .hero::before {
@@ -242,8 +242,8 @@ footer {
 /* Mobile */
 @media (max-width: 768px) {
   header {
-    padding: 10px 15px; /* Reduced padding for mobile */
-    height: 60px; /* Fixed height for consistency */
+    padding: 8px 10px; /* Further reduced padding */
+    height: 60px; /* Consistent height */
   }
 
   .header-left {
@@ -257,8 +257,8 @@ footer {
   }
 
   header img {
-    height: 40px; /* Further reduced for mobile */
-    margin-right: 15px;
+    height: 40px; /* Optimized for mobile */
+    margin-right: 10px;
   }
 
   .menu-toggle {
@@ -267,7 +267,7 @@ footer {
 
   nav {
     position: absolute;
-    top: 60px; /* Adjusted to start below fixed header */
+    top: 60px; /* Aligns with header height */
     left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.9);
@@ -285,8 +285,8 @@ footer {
 
   nav ul {
     flex-direction: column;
-    padding: 20px;
-    gap: 15px;
+    padding: 15px;
+    gap: 10px; /* Reduced gap for mobile */
     background-color: rgba(0, 0, 0, 0.9);
     display: none;
   }
@@ -302,8 +302,8 @@ footer {
 
   nav ul li a {
     display: block;
-    padding: 15px 0;
-    font-size: 1.2em;
+    padding: 12px 0;
+    font-size: 1.1em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     text-align: left;
   }
@@ -312,7 +312,7 @@ footer {
     text-align: center;
     justify-content: center;
     padding: 20px;
-    margin-top: 60px; /* Adjusted to match header height */
+    margin-top: 60px;
   }
 
   .hero-content {
