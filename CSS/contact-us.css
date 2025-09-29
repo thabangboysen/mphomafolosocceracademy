@@ -1,458 +1,6 @@
 
     /* Reset */
-    * {<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mpho Mafolo Soccer Academy</title>
-  <link rel="stylesheet" href="/CSS/index.css">
-</head>
-<style>
-  /* Reset */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: Arial, sans-serif;
-    background: url('../pictures & videos/481898803_122115556796774371_1149112215614248824_n.jpg') no-repeat center center/cover;
-    background-color: #000; /* Fallback */
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding-top: 80px; /* Space for fixed header */
-    position: relative;
-  }
-
-  body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 0;
-  }
-
-  body > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* HEADER */
-  header {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    box-shadow: 0 0 20px #00BFFF;
-    transition: box-shadow 0.3s ease-in-out;
-  }
-
-  header img {
-    height: 60px;
-  }
-
-  /* Mobile menu toggle */
-  .menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    padding: 5px;
-  }
-
-  .menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 2px 0;
-    transition: 0.3s;
-    border-radius: 2px;
-  }
-
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    height: 60px;
-    padding: 0 10px;
-    transition: color 0.3s, text-shadow 0.3s;
-  }
-
-  nav ul li a:hover {
-    color: #00BFFF;
-    text-shadow: 0 0 15px #00BFFF;
-  }
-
-  /* HERO SECTION */
-  .hero {
-    position: relative;
-    min-height: 500px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: #fff;
-    flex: 1;
-    text-align: left;
-  }
-
-  .hero-content {
-    padding-left: 50px;
-    max-width: 90%;
-  }
-
-  .hero h1 {
-    font-size: 2.5em;
-  }
-
-  .hero h3 {
-    font-size: 1.2em;
-    margin-top: 10px;
-  }
-
-  /* BUTTON */
-  .join-btn {
-    background-color: #00bcd4;
-    color: #fff;
-    padding: 12px 25px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-decoration: none;
-    margin-top: 20px;
-    display: inline-block;
-    animation: glow 1.5s infinite alternate;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .join-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px #00e5ff, 0 0 40px #00bcd4, 0 0 60px #00e5ff;
-  }
-
-  /* SOCIAL */
-  .social-section {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    text-align: center;
-    padding: 10px;
-    z-index: 2;
-    width: 100%;
-  }
-
-  .social-icons {
-    margin-top: 10px;
-  }
-
-  .social-icons a {
-    margin: 0 8px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: #001f3f;
-    border-radius: 50%;
-    transition: transform 0.3s;
-  }
-
-  .social-icons a:hover {
-    transform: scale(1.2);
-  }
-
-  .social-icons svg {
-    width: 22px;
-    height: 22px;
-    fill: white;
-  }
-
-  /* FOOTER */
-  footer {
-    background-color: #001f3f;
-    text-align: center;
-    padding: 25px;
-    margin-top: auto;
-  }
-
-  footer p {
-    margin: 0;
-    color: white;
-    font-weight: bold;
-  }
-
-  /* ===============================
-     RESPONSIVE BREAKPOINTS
-     =============================== */
-
-  /* Tablets (≤1024px) */
-  @media (max-width: 1024px) {
-    .hero h1 { font-size: 2em; }
-    .hero h3 { font-size: 1em; }
-    nav ul { gap: 15px; }
-  }
-
-  /* Mobile (≤768px) */
-  @media (max-width: 768px) {
-    header {
-      padding: 10px 20px;
-    }
-
-    .menu-toggle {
-      display: flex;
-    }
-
-    nav {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      transform: translateY(-100%);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    nav.active {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-    }
-
-    nav ul {
-      flex-direction: column;
-      padding: 20px 0;
-      gap: 0;
-      width: 100%;
-      align-items: flex-start;
-    }
-
-    nav ul li {
-      width: 100%;
-    }
-
-    nav ul li a {
-      display: block;
-      padding: 15px 30px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 1.1rem;
-      height: auto;
-    }
-
-    .hero {
-      text-align: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .hero-content {
-      padding: 0;
-    }
-
-    .hero h1 { font-size: 1.8em; }
-    .hero h3 { font-size: 1em; }
-  }
-
-  /* Small Phones (≤480px) */
-  @media (max-width: 480px) {
-    header {
-      padding: 10px 15px;
-    }
-
-    header img {
-      height: 45px;
-    }
-
-    .menu-toggle span {
-      width: 22px;
-    }
-
-    body {
-      padding-top: 70px;
-    }
-
-    nav ul li a {
-      font-size: 0.9em;
-      padding: 12px 25px;
-    }
-
-    .hero {
-      min-height: 350px;
-    }
-
-    .hero h1 { font-size: 1.5em; }
-    .hero h3 { font-size: 0.9em; }
-
-    .join-btn {
-      padding: 10px 15px;
-      font-size: 0.9em;
-    }
-
-    .social-icons a {
-      width: 35px;
-      height: 35px;
-    }
-
-    .social-icons svg {
-      width: 18px;
-      height: 18px;
-    }
-  }
-
-  /* Very small phones (≤360px) */
-  @media (max-width: 360px) {
-    .hero h1 { font-size: 1.3em; }
-    .hero h3 { font-size: 0.85em; }
-  }
-
-  /* Landscape orientation fixes */
-  @media (max-height: 600px) and (orientation: landscape) {
-    body {
-      padding-top: 60px;
-    }
-    .hero {
-      min-height: 300px;
-    }
-  }
-
-  /* ANIMATIONS */
-  @keyframes glow {
-    0% { box-shadow: 0 0 5px #00BFFF; }
-    50% { box-shadow: 0 0 15px #00BFFF; }
-    100% { box-shadow: 0 0 25px #00BFFF; }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
-<body>
-  <header>
-    <div class="header-left">
-      <a href="index.html"><img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo"></a>
-    </div>
-    <div class="header-right">
-      <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-    <nav id="nav">
-      <ul>
-        <li><a href="#" onclick="closeMenu()">Programs</a></li>
-        <li><a href="/Html pages/gallery.html" onclick="closeMenu()">Gallery</a></li>
-        <li><a href="/Html pages/contact-us.html" onclick="closeMenu()">Contact Us</a></li>
-        <li><a href="/Html pages/support-us.html" onclick="closeMenu()">Support Us</a></li>
-        <li><a href="/Html pages/why-us.html" onclick="closeMenu()">Why Us</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="hero-content">
-      <h1>INSPIRING THE NEXT GENERATION</h1>
-      <h3>Developing Football Talent And Skills</h3>
-      <a class="join-btn" href="https://wa.me/27686984744?text=Hello%20I%20want%20to%20become%20a%20member" target="_blank">Become a Member</a>
-    </div>
-
-    <section class="social-section">
-      <h2>Follow Us on Social Media!</h2>
-      <p>Stay updated with our latest news, videos, and events.</p>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/profile.php?id=61573231138437" target="_blank" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24H12.82v-9.294H9.692V11.29h3.128V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.587l-.467 3.416h-3.12V24h6.116C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@mphomafolo_socceracademy" target="_blank" aria-label="TikTok">
-          <svg viewBox="0 0 24 24"><path d="M12.004 0c-.183 0-.366.01-.547.03v9.502c.908.15 1.798.584 2.48 1.258 1.116 1.12 1.58 2.65 1.295 4.22-.206 1.197-.82 2.287-1.716 3.047-.902.763-2.07 1.18-3.286 1.18-1.63 0-3.167-.788-4.11-2.033-.967-1.281-1.225-2.946-.717-4.462.386-1.21 1.287-2.22 2.446-2.778v-4.894C5.1 5.027 4.515 5.28 4 5.66.526 9.91.526 12.93 0 12.93c0 4.577 3.71 8.286 8.284 8.286 4.575 0 8.285-3.709 8.285-8.286V5.529h-2.59v-.004c-.01 0-.02 0-.03-.002-1.185-.023-2.304-.49-3.178-1.26v-.263z"/></svg>
-        </a>
-        <a href="https://www.youtube.com/@MphoMafoloSoccerAcademy00" target="_blank" aria-label="YouTube">
-          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a2.996 2.996 0 0 0-2.11-2.115C19.358 3.5 12 3.5 12 3.5s-7.358 0-9.388.571a2.996 2.996 0 0 0-2.11 2.115C0 8.202 0 12 0 12s0 3.798.502 5.814a2.996 2.996 0 0 0 2.11 2.115C4.642 20.5 12 20.5 12 20.5s7.358 0 9.388-.571a2.996 2.996 0 0 0 2.11-2.115C24 15.798 24 12 24 12s0-3.798-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/mphomafolo_socceracademy/?hl=en#" target="_blank" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.34 3.608 1.316.975.976 1.254 2.243 1.316 3.608.058 1.266.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.34 2.633-1.316 3.608-.976.975-2.243 1.254-3.608 1.316-1.266.058-1.645.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.34-3.608-1.316-.975-.976-1.254-2.243-1.316-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.34-2.633 1.316-3.608C4.535 2.503 5.802 2.224 7.168 2.163 8.434 2.105 8.814 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.072 5.77.132 4.632.345 3.682 1.295 2.732 2.245 2.519 3.383 2.459 4.665 2.399 5.946 2.387 6.741 2.387 12s.012 6.054.072 7.335c.06 1.282.273 2.42 1.223 3.37.95.95 2.088 1.163 3.37 1.223 1.281.06 1.69.072 7.335.072s6.054-.012 7.335-.072c1.282-.06 2.42-.273 3.37-1.223.95-.95 1.163-2.088 1.223-3.37.06-1.281.072-1.69.072-7.335s-.012-6.054-.072-7.335c-.06-1.282-.273-2.42-1.223-3.37-.95-.95-2.088-1.163-3.37-1.223C18.054.012 17.645 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-        </a>
-      </div>
-    </section>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Mpho Mafolo Soccer Academy. All rights reserved.</p>
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById('nav');
-      const menuToggle = document.querySelector('.menu-toggle');
-      
-      nav.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-    }
-
-    function closeMenu() {
-      const nav = document.getElementById('nav');
-      const menuToggle = document.querySelector('.menu-toggle');
-      
-      nav.classList.remove('active');
-      menuToggle.classList.remove('active');
-    }
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const nav = document.getElementById('nav');
-      const menuToggle = document.querySelector('.menu-toggle');
-      const header = document.querySelector('header');
-      
-      if (!header.contains(event.target) && nav.classList.contains('active')) {
-        closeMenu();
-      }
-    });
-
-    // Handle window resize
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
-        closeMenu();
-      }
-    });
-  </script>
-</body>
-</html>
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -460,37 +8,22 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: url('../pictures & videos/481898803_122115556796774371_1149112215614248824_n.jpg') no-repeat center center/cover;
-      background-color: #000; /* Fallback */
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
+                  url('../pictures & videos/481898803_122115556796774371_1149112215614248824_n.jpg') center/cover;
+      background-color: #000;
+      background-attachment: fixed;
       overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-top: 80px; /* space for fixed header */
-      position: relative;
-    }
-
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: 0;
-    }
-
-    body > * {
-      position: relative;
-      z-index: 1;
     }
 
     /* HEADER */
     header {
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
       color: white;
-      padding: 10px 30px;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -498,13 +31,23 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 100;
-      box-shadow: 0 0 20px #00BFFF;
-      transition: box-shadow 0.3s ease-in-out;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 191, 255, 0.3);
+    }
+
+    .header-left {
+      flex-shrink: 0;
     }
 
     header img {
-      height: 60px;
+      height: 50px;
+      width: auto;
+      display: block;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
     }
 
     /* Mobile menu toggle */
@@ -512,39 +55,66 @@
       display: none;
       flex-direction: column;
       cursor: pointer;
-      padding: 5px;
+      padding: 8px;
+      z-index: 1001;
     }
 
     .menu-toggle span {
-      width: 25px;
+      width: 28px;
       height: 3px;
       background-color: white;
-      margin: 2px 0;
+      margin: 3px 0;
       transition: 0.3s;
       border-radius: 2px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-6px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-6px, -6px);
+    }
+
+    nav {
+      display: flex;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
     }
 
     nav ul li a {
       color: white;
       text-decoration: none;
-      font-size: 1.1em;
+      font-size: 1em;
       font-weight: bold;
-      display: flex;
-      align-items: center;
-      height: 60px;
-      padding: 0 10px;
-      transition: color 0.3s, text-shadow 0.3s;
+      padding: 8px 12px;
+      transition: all 0.3s;
+      border-radius: 4px;
+      white-space: nowrap;
     }
 
     nav ul li a:hover {
       color: #00BFFF;
-      text-shadow: 0 0 15px #00BFFF;
+      background-color: rgba(0, 191, 255, 0.1);
+      text-shadow: 0 0 10px #00BFFF;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-top: 80px;
     }
 
     /* ABOUT / CONTACT SECTION */
@@ -575,27 +145,42 @@
     .about-text h2,
     .about-text h3 {
       color: #00BFFF;
-      text-shadow: 1px 1px 4px #000;
+      text-shadow: 2px 2px 6px #000;
       margin-bottom: 15px;
+    }
+
+    .about-text h2 {
+      font-size: 2.5em;
+    }
+
+    .about-text h3 {
+      font-size: 1.5em;
     }
 
     .about-text p,
     .about-text a {
       color: white;
-      text-shadow: 1px 1px 4px #000;
+      text-shadow: 2px 2px 6px #000;
       font-weight: bold;
       margin-bottom: 10px;
       text-decoration: none;
+      font-size: 1.1em;
+    }
+
+    .about-text a:hover {
+      color: #00BFFF;
     }
 
     .contact-form {
       margin-top: 20px;
-      background-color: rgba(0, 31, 63, 0.9);
-      padding: 20px;
+      background-color: rgba(0, 31, 63, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 25px;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
       gap: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     .form-group {
@@ -607,55 +192,61 @@
       font-weight: bold;
       color: #00BFFF;
       margin-bottom: 5px;
+      font-size: 0.95em;
     }
 
     .contact-form input,
     .contact-form textarea {
-      padding: 10px;
-      border: 1px solid #00BFFF;
+      padding: 12px;
+      border: 2px solid #00BFFF;
       border-radius: 5px;
-      background-color: #fff;
+      background-color: rgba(255, 255, 255, 0.95);
       font-size: 1em;
-      transition: border-color 0.3s;
+      transition: all 0.3s;
     }
 
     .contact-form input:focus,
     .contact-form textarea:focus {
-      border-color: #00BFFF;
+      border-color: #00e5ff;
       outline: none;
-      box-shadow: 0 0 5px #00BFFF;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+      background-color: #fff;
     }
 
     .error-message {
       color: #ff4444;
       font-size: 0.9em;
       margin-top: 5px;
+      text-shadow: 1px 1px 2px #000;
     }
 
     .contact-form .submit-btn {
-      background-color: #00BFFF;
+      background: linear-gradient(135deg, #00bcd4, #0097a7);
       color: #fff;
-      padding: 10px 20px;
+      padding: 12px 30px;
       border: none;
-      border-radius: 5px;
+      border-radius: 30px;
       font-weight: bold;
+      font-size: 1.1em;
       cursor: pointer;
       width: auto;
       align-self: flex-end;
-      transition: background-color 0.3s;
-      animation: glow 1.5s infinite alternate;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
     }
 
     .contact-form .submit-btn:hover {
-      background-color: #0097a7;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 229, 255, 0.6);
     }
 
     /* MAP */
     .map {
       flex: 2 1 500px;
-      min-height: 400px;
+      min-height: 450px;
       border-radius: 10px;
       overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     .map iframe {
@@ -670,13 +261,38 @@
       background-color: #001f3f;
       text-align: center;
       padding: 25px;
+      color: white;
       margin-top: auto;
     }
 
     footer p {
       margin: 0;
-      color: white;
       font-weight: bold;
+    }
+
+    /* Overlay for mobile menu */
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .menu-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* ===============================
@@ -689,16 +305,24 @@
         flex-direction: column;
         align-items: center;
       }
+      
       .map {
-        min-height: 300px;
+        min-height: 350px;
         width: 100%;
       }
+      
+      nav ul { gap: 15px; }
+      nav ul li a { font-size: 0.95em; }
     }
 
     /* Mobile (≤768px) */
     @media (max-width: 768px) {
       header {
-        padding: 10px 20px;
+        padding: 12px 15px;
+      }
+
+      header img {
+        height: 45px;
       }
 
       .menu-toggle {
@@ -706,29 +330,26 @@
       }
 
       nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: transparent;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 280px;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.98), rgba(0, 31, 63, 0.98));
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding-top: 80px;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
       }
 
       nav.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
+        transform: translateX(0);
       }
 
       nav ul {
         flex-direction: column;
-        padding: 20px 0;
         gap: 0;
         width: 100%;
-        align-items: flex-start;
       }
 
       nav ul li {
@@ -737,10 +358,14 @@
 
       nav ul li a {
         display: block;
-        padding: 15px 30px;
+        padding: 18px 30px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 1.1rem;
-        height: auto;
+        font-size: 1.1em;
+        border-radius: 0;
+      }
+
+      main {
+        margin-top: 70px;
       }
 
       .about-section {
@@ -748,7 +373,11 @@
       }
       
       .about-text h2 {
-        font-size: 1.8rem;
+        font-size: 2em;
+      }
+
+      .about-text h3 {
+        font-size: 1.3em;
       }
       
       .about-text p {
@@ -756,31 +385,36 @@
       }
       
       .map {
-        min-height: 250px;
+        min-height: 300px;
       }
     }
 
     /* Small Phones (≤480px) */
     @media (max-width: 480px) {
       header {
-        padding: 10px 15px;
+        padding: 10px 12px;
       }
 
       header img {
-        height: 45px;
+        height: 40px;
       }
 
       .menu-toggle span {
-        width: 22px;
+        width: 25px;
       }
 
-      body {
+      main {
+        margin-top: 60px;
+      }
+
+      nav {
+        width: 250px;
         padding-top: 70px;
       }
 
       nav ul li a {
-        font-size: 0.9em;
-        padding: 12px 25px;
+        padding: 15px 25px;
+        font-size: 1em;
       }
 
       .about-section {
@@ -788,26 +422,26 @@
       }
 
       .about-text h2 {
-        font-size: 1.5rem;
+        font-size: 1.6em;
       }
       
       .about-text h3 {
-        font-size: 1.2rem;
+        font-size: 1.2em;
       }
       
       .about-text p {
-        font-size: 0.9rem;
+        font-size: 0.95em;
       }
       
       .contact-form {
-        padding: 15px;
+        padding: 18px;
         gap: 12px;
       }
 
       .contact-form input,
       .contact-form textarea {
-        padding: 8px;
-        font-size: 0.9em;
+        padding: 10px;
+        font-size: 0.95em;
       }
       
       .contact-form .submit-btn {
@@ -817,42 +451,50 @@
       }
       
       .map {
-        min-height: 200px;
+        min-height: 250px;
       }
       
       footer p {
-        font-size: 0.9rem;
+        font-size: 0.9em;
         padding: 0 10px;
       }
     }
 
     /* Very small phones (≤360px) */
     @media (max-width: 360px) {
+      header img {
+        height: 35px;
+      }
+
+      nav {
+        width: 220px;
+      }
+
       .about-text h2 {
-        font-size: 1.3rem;
+        font-size: 1.4em;
       }
       
       .about-text h3 {
-        font-size: 1.1rem;
+        font-size: 1.1em;
       }
       
       .about-text p {
-        font-size: 0.85rem;
+        font-size: 0.9em;
       }
       
       .contact-form {
-        padding: 12px;
+        padding: 15px;
       }
 
       .map {
-        min-height: 180px;
+        min-height: 200px;
       }
     }
 
     /* Landscape orientation fixes */
     @media (max-height: 600px) and (orientation: landscape) {
-      body {
-        padding-top: 60px;
+      main {
+        margin-top: 60px;
       }
       
       .about-section {
@@ -860,18 +502,6 @@
       }
       
       .map {
-        min-height: 200px;
+        min-height: 250px;
       }
-    }
-
-    /* ANIMATIONS */
-    @keyframes glow {
-      0% { box-shadow: 0 0 5px #00BFFF; }
-      50% { box-shadow: 0 0 15px #00BFFF; }
-      100% { box-shadow: 0 0 25px #00BFFF; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
