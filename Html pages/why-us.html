@@ -12,12 +12,12 @@
     <nav class="nav-container">
       <div class="logo">
         <a href="/index.html">
-          <img src="/pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo">
+          <img src="https://via.placeholder.com/200x80/001f3f/00d4ff?text=MMSA" alt="Mpho Mafolo Soccer Academy Logo">
         </a>
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="/index.html">Home</a></li>
-        <li><a href="#">Programs</a></li>
+        <li><a href="#programs">Programs</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="contact-us.html">Contact Us</a></li>
         <li><a href="support-us.html">Support Us</a></li>
@@ -47,7 +47,7 @@
         </div>
         <div class="reason">
           <h3>Youth-Focused Programs</h3>
-          <p>We specialize in U13 and other youth categories, building strong foundations in skills, teamwork, and discipline for long-term success.</p>
+          <p>We specialize in U11 and other youth categories, building strong foundations in skills, teamwork, and discipline for long-term success.</p>
         </div>
         <div class="reason">
           <h3>Community and Growth</h3>
@@ -249,10 +249,10 @@
       </div>
 
       <div class="submit-section">
-        <button type="submit" class="submit-btn" form="registrationForm">Submit Registration</button>
+        <button type="submit" class="submit-btn" form="registrationForm">Continue to Payment</button>
         <button type="button" class="cancel-btn" onclick="closeRegistrationModal()">Cancel</button>
         <p style="margin-top: 15px; font-size: 0.85rem; color: #6B7280;">
-          By submitting this form, you agree to our terms and conditions. We will contact you within 24 hours to confirm registration and payment details.
+          By submitting this form, you agree to our terms and conditions. You will be redirected to our secure payment gateway to complete registration.
         </p>
       </div>
     </div>
@@ -346,12 +346,18 @@
       }
 
       const playerName = registrationData.playerName;
+      const guardianEmail = registrationData.guardianEmail || '';
+      const guardianPhone = registrationData.guardianPhone;
       
-      alert('Registration form submitted successfully! We will contact you within 24 hours to confirm payment details.');
+      // Store registration data in sessionStorage for the payment page
+      sessionStorage.setItem('registrationData', JSON.stringify(registrationData));
+      
+      // Show success message
+      alert('Registration form completed successfully! Redirecting to secure payment...');
       closeRegistrationModal();
       
-      // Reset form
-      document.getElementById('registrationForm').reset();
+      // Redirect to payment page with player details
+      window.location.href = `payment.html?player=${encodeURIComponent(playerName)}&email=${encodeURIComponent(guardianEmail)}&phone=${encodeURIComponent(guardianPhone)}`;
     }
   </script>
 
