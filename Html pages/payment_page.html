@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payment - Mpho Mafolo Soccer Academy</title>
- <link rel="stylesheet" href="/CSS/payment.css">
+  <link rel="stylesheet" href="/CSS/payment.css">
 </head>
 <body>
-
   <div class="container">
     <div class="header">
-      <h1>Complete Your Registration Payment</h1>
-      <p>Mpho Mafolo Soccer Academy - Secure Payment Portal</p>
+      <h1>Complete Your Registration</h1>
+      <p>Secure Payment via PayFast - South Africa's Leading Payment Gateway</p>
     </div>
 
     <div class="payment-content">
@@ -29,20 +28,15 @@
           <span class="item-price">Included</span>
         </div>
         
-        <div class="summary-item">
-          <span class="item-description">Processing Fee</span>
-          <span class="item-price">R15.00</span>
-        </div>
-        
-        <div class="summary-item">
-          <span class="item-description"><strong>Total Amount</strong></span>
-          <span class="item-price"><strong>R815.00</strong></span>
+        <div class="summary-item total-item">
+          <span class="item-description">Total Amount</span>
+          <span class="item-price">R800.00</span>
         </div>
 
         <div class="player-info">
           <h3>Player Details</h3>
           <div class="player-details">
-            <p><strong>Name:</strong> <span id="playerNameDisplay">John Doe</span></p>
+            <p><strong>Name:</strong> <span id="playerNameDisplay">Loading...</span></p>
             <p><strong>Age Group:</strong> U11 (5-13 years)</p>
             <p><strong>Training:</strong> Saturdays 09:00-11:00</p>
             <p><strong>Venue:</strong> TUT eMalahleni Sports Field</p>
@@ -52,107 +46,88 @@
 
       <!-- Payment Form -->
       <div class="payment-form">
-        <!-- Demo Notice -->
-        <div class="demo-notice">
-          <h4>⚠️ DEMO PAYMENT SYSTEM</h4>
-          <p>This is a demonstration interface only. No real payments will be processed. To implement real payments, integrate with PayFast, PayGate, or similar licensed payment processors.</p>
+        <div class="setup-notice">
+          <h3>⚙️ Setup Required</h3>
+          <p><strong>To enable real payments, complete these steps:</strong></p>
+          <ol>
+            <li>Sign up at <a href="https://www.payfast.co.za" target="_blank">payfast.co.za</a></li>
+            <li>Complete merchant verification (2-5 business days)</li>
+            <li>Get your Merchant ID and Merchant Key</li>
+            <li>Replace the placeholders in the code with your credentials</li>
+            <li>Set your passphrase in PayFast dashboard</li>
+          </ol>
+          <p style="margin-top:15px; font-weight:600; color:#92400E;">Once setup, this page will process real payments directly to your Capitec account (2016465480).</p>
         </div>
 
-        <!-- Payment Method Selection -->
         <div class="form-section">
-          <h3>
-            <span class="section-icon">1</span>
-            Select Payment Method
-          </h3>
+          <h3>Payment Information</h3>
           
-          <div class="payment-methods">
-            <label class="payment-method active" for="card">
-              <input type="radio" id="card" name="payment-method" value="card" checked>
-              <div class="method-icon">💳</div>
-              <div class="method-name">Credit/Debit Card</div>
-              <div class="method-description">Visa, Mastercard</div>
-            </label>
+          <div class="payment-gateway-info">
+            <div class="gateway-logos">
+              <div class="gateway-logo">PayFast</div>
+              <div class="gateway-logo">Visa</div>
+              <div class="gateway-logo">Mastercard</div>
+              <div class="gateway-logo">EFT</div>
+            </div>
+            <p style="color:#1E40AF; font-weight:600; margin-bottom:10px;">Accepted Payment Methods:</p>
+            <p style="color:#475569; font-size:0.9rem; font-weight:500;">Credit/Debit Cards, Instant EFT, SnapScan, Zapper, and more</p>
+            <div class="security-badges">
+              <span class="badge">PCI-DSS Compliant</span>
+              <span class="badge">256-bit SSL</span>
+              <span class="badge">3D Secure</span>
+            </div>
+          </div>
+
+          <form id="paymentForm" action="https://www.payfast.co.za/eng/process" method="POST">
+            <!-- PayFast Required Fields -->
+            <input type="hidden" name="merchant_id" value="YOUR_MERCHANT_ID">
+            <input type="hidden" name="merchant_key" value="YOUR_MERCHANT_KEY">
+            <input type="hidden" name="return_url" value="https://yourwebsite.com/payment-success.html">
+            <input type="hidden" name="cancel_url" value="https://yourwebsite.com/payment-cancelled.html">
+            <input type="hidden" name="notify_url" value="https://yourwebsite.com/payment-notify.php">
             
-            <label class="payment-method" for="eft">
-              <input type="radio" id="eft" name="payment-method" value="eft">
-              <div class="method-icon">🏦</div>
-              <div class="method-name">EFT/Bank Transfer</div>
-              <div class="method-description">Direct bank payment</div>
-            </label>
-          </div>
-        </div>
-
-        <!-- Card Payment Form -->
-        <div id="cardForm" class="form-section">
-          <h3>
-            <span class="section-icon">2</span>
-            Card Information
-          </h3>
-          
-          <div class="form-group">
-            <label for="cardNumber">Card Number</label>
-            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
-          </div>
-          
-          <div class="form-row">
+            <!-- Transaction Details -->
+            <input type="hidden" name="amount" value="800.00">
+            <input type="hidden" name="item_name" value="MMSA Registration Fee + Team Kit">
+            <input type="hidden" name="item_description" id="itemDescription" value="Registration for Player">
+            
+            <!-- Customer Details -->
             <div class="form-group">
-              <label for="expiryDate">Expiry Date</label>
-              <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5">
+              <label for="name_first">First Name *</label>
+              <input type="text" id="name_first" name="name_first" required>
             </div>
+
             <div class="form-group">
-              <label for="cvv">CVV</label>
-              <input type="text" id="cvv" placeholder="123" maxlength="4">
+              <label for="name_last">Last Name *</label>
+              <input type="text" id="name_last" name="name_last" required>
             </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="cardName">Cardholder Name</label>
-            <input type="text" id="cardName" placeholder="Name on card">
-          </div>
-        </div>
 
-        <!-- EFT Form -->
-        <div id="eftForm" class="form-section" style="display: none;">
-          <h3>
-            <span class="section-icon">2</span>
-            Banking Details
-          </h3>
-          
-          <div class="form-group">
-            <label for="bankName">Bank Name</label>
-            <select id="bankName">
-              <option value="">Select Bank</option>
-              <option value="fnb">FNB</option>
-              <option value="standard">Standard Bank</option>
-              <option value="absa">ABSA</option>
-              <option value="nedbank">Nedbank</option>
-              <option value="capitec">Capitec</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="accountNumber">Account Number</label>
-            <input type="text" id="accountNumber" placeholder="Enter account number">
-          </div>
-          
-          <div class="form-group">
-            <label for="accountHolder">Account Holder Name</label>
-            <input type="text" id="accountHolder" placeholder="Account holder name">
-          </div>
-        </div>
+            <div class="form-group">
+              <label for="email_address">Email Address *</label>
+              <input type="email" id="email_address" name="email_address" required>
+            </div>
 
-        <!-- Security Notice -->
-        <div class="security-notice">
-          <span class="security-icon">🔒</span>
-          <div>
-            <strong>Your payment is secure:</strong> All transactions are encrypted and processed through secure payment gateways. We never store your banking details.
-          </div>
-        </div>
+            <div class="form-group">
+              <label for="cell_number">Cell Number *</label>
+              <input type="tel" id="cell_number" name="cell_number" placeholder="0821234567" pattern="[0-9]{10}" required>
+            </div>
 
-        <!-- Action Buttons -->
-        <div class="payment-buttons">
-          <button type="button" class="btn-secondary" onclick="goBack()">Back to Registration</button>
-          <button type="button" class="btn-primary" onclick="processPayment()">Pay R815.00</button>
+            <!-- Hidden signature field - will be generated -->
+            <input type="hidden" name="signature" id="signature" value="">
+
+            <div class="security-notice">
+              <div class="security-icon">🔒</div>
+              <div class="security-text">
+                <strong>Your Payment is 100% Secure</strong>
+                <p>Processed by PayFast, South Africa's most trusted payment gateway. Your banking details are never stored on our servers. All transactions are encrypted and PCI-DSS compliant.</p>
+              </div>
+            </div>
+
+            <div class="payment-buttons">
+              <button type="button" class="btn-secondary" onclick="goBack()">Go Back</button>
+              <button type="submit" class="btn-primary">Pay R800.00 Now</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -162,108 +137,50 @@
   <div id="processingModal" class="processing-modal">
     <div class="processing-content">
       <div class="spinner"></div>
-      <h3>Processing Payment...</h3>
-      <p>Please wait while we process your payment securely.</p>
+      <h3>Redirecting to PayFast...</h3>
+      <p>Please wait while we redirect you to our secure payment gateway.</p>
     </div>
   </div>
 
   <script>
-    // Payment method switching
-    document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
-      radio.addEventListener('change', function() {
-        // Update visual selection
-        document.querySelectorAll('.payment-method').forEach(method => {
-          method.classList.remove('active');
-        });
-        this.closest('.payment-method').classList.add('active');
-
-        // Show/hide forms
-        if (this.value === 'card') {
-          document.getElementById('cardForm').style.display = 'block';
-          document.getElementById('eftForm').style.display = 'none';
-        } else {
-          document.getElementById('cardForm').style.display = 'none';
-          document.getElementById('eftForm').style.display = 'block';
-        }
-      });
-    });
-
-    // Card number formatting
-    document.getElementById('cardNumber').addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
-      e.target.value = value;
-    });
-
-    // Expiry date formatting
-    document.getElementById('expiryDate').addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length >= 2) {
-        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    // Load player name from URL or storage
+    window.addEventListener('load', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const playerName = urlParams.get('player');
+      
+      if (playerName) {
+        document.getElementById('playerNameDisplay').textContent = playerName;
+        document.getElementById('itemDescription').value = 'MMSA Registration for ' + playerName;
+      } else {
+        document.getElementById('playerNameDisplay').textContent = 'New Player';
       }
-      e.target.value = value;
-    });
-
-    // CVV formatting
-    document.getElementById('cvv').addEventListener('input', function(e) {
-      e.target.value = e.target.value.replace(/\D/g, '');
     });
 
     function goBack() {
-      if (confirm('Are you sure you want to go back? Your payment information will be lost.')) {
+      if (confirm('Are you sure you want to go back? You will need to re-enter your details.')) {
         window.history.back();
       }
     }
 
-    function processPayment() {
-      const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
-      
-      // Basic validation
-      if (paymentMethod === 'card') {
-        const cardNumber = document.getElementById('cardNumber').value;
-        const expiryDate = document.getElementById('expiryDate').value;
-        const cvv = document.getElementById('cvv').value;
-        const cardName = document.getElementById('cardName').value;
-
-        if (!cardNumber || !expiryDate || !cvv || !cardName) {
-          alert('Please fill in all card details.');
-          return;
-        }
-      } else if (paymentMethod === 'eft') {
-        const bankName = document.getElementById('bankName').value;
-        const accountNumber = document.getElementById('accountNumber').value;
-        const accountHolder = document.getElementById('accountHolder').value;
-
-        if (!bankName || !accountNumber || !accountHolder) {
-          alert('Please fill in all banking details.');
-          return;
-        }
-      }
-
+    // Handle form submission
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
       // Show processing modal
       document.getElementById('processingModal').style.display = 'block';
+      
+      // Note: In production, you would generate the signature server-side
+      // The signature is an MD5 hash of all the payment parameters
+      // For security, this MUST be done on your server, not in JavaScript
+      
+      // Form will submit to PayFast after a brief delay
+      setTimeout(function() {
+        // Form submits naturally to PayFast
+      }, 1000);
+    });
 
-      // Simulate payment processing
-      setTimeout(() => {
-        document.getElementById('processingModal').style.display = 'none';
-        
-        // Show success message
-        alert('DEMO: Payment processing would normally happen here through a licensed payment gateway like PayFast or PayGate. In a real system, this would:\n\n1. Validate payment details\n2. Process the transaction securely\n3. Send confirmation to both parties\n4. Generate a receipt\n5. Update registration status');
-        
-        // Redirect to success page (mock)
-        window.location.href = '#success';
-      }, 3000);
-    }
-
-    // Load player name from registration if available
-    window.addEventListener('load', function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const playerName = urlParams.get('player') || localStorage.getItem('playerName');
-      if (playerName) {
-        document.getElementById('playerNameDisplay').textContent = playerName;
-      }
+    // Format phone number
+    document.getElementById('cell_number').addEventListener('input', function(e) {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
     });
   </script>
-
 </body>
 </html>
