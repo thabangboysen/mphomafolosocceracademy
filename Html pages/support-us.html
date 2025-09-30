@@ -4,33 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mpho Mafolo Soccer Academy - Support Us</title>
-  <link rel="stylesheet" href="/CSS/support-us.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
-
   <!-- HEADER -->
   <header>
-    <div class="header-left">
-      <a href="/index.html">
-        <img src="../pictures & videos/logo.png" alt="Mpho Mafolo Soccer Academy Logo">
-      </a>
-    </div>
-    <div class="header-right">
-      <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+    <nav class="nav-container">
+      <div class="logo">
+        <a href="/index.html">
+          <img src="https://via.placeholder.com/200x80/001f3f/00d4ff?text=MMSA" alt="Mpho Mafolo Soccer Academy Logo">
+        </a>
       </div>
-    </div>
-    <nav id="nav">
-      <ul>
-        <li><a href="#" onclick="closeMenu()">Programs</a></li>
-        <li><a href="gallery.html" onclick="closeMenu()">Gallery</a></li>
-        <li><a href="contact-us.html" onclick="closeMenu()">Contact Us</a></li>
-        <li><a href="support-us.html" onclick="closeMenu()">Support Us</a></li>
-        <li><a href="why-us.html" onclick="closeMenu()">Why Us</a></li>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="support-us.html">Support Us</a></li>
+        <li><a href="why-us.html">Why Us</a></li>
       </ul>
+      <div class="burger" id="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
     </nav>
   </header>
 
@@ -39,7 +36,7 @@
     <section class="support-section animated-section">
       <h1>DONATION</h1>
       <p>Support our kids in South Africa</p>
-      <a href="https://wa.me/27686984744" class="btn" target="_blank">Donate</a>
+      <a href="https://wa.me/27686984744" class="btn" target="_blank">Donate Now</a>
     </section>
 
     <!-- WHY SECTION -->
@@ -66,18 +63,18 @@
       <p>We take care of the allocation to where it is most needed. The most common expenditures are listed below:</p>
       <div class="usage-list">
         <div class="usage-item">
-          <img src="../pictures & videos/football-cones-and-training-equipment.webp" alt="Equipment">
+          <img src="https://images.unsplash.com/photo-1577223625816-7546f74f3d74?w=600" alt="Equipment">
           <p><strong>Equipment</strong></p>
           <p>Training gear and transport</p>
         </div>
         <div class="usage-item">
-          <img src="../pictures & videos/Nutritions.jpg" alt="Nutrition">
+          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600" alt="Nutrition">
           <p><strong>Nutrition</strong></p>
           <p>After every session</p>
           <p>Fruits, sandwiches & refreshments</p>
         </div>
         <div class="usage-item">
-          <img src="../pictures & videos/stadium.webp" alt="Facilities">
+          <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=600" alt="Facilities">
           <p><strong>Facilities</strong></p>
           <p>Soccer fields, gym & coach office</p>
         </div>
@@ -111,45 +108,31 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      const nav = document.getElementById('nav');
-      const menuToggle = document.getElementById('menuToggle');
-      const menuOverlay = document.getElementById('menuOverlay');
-      
-      nav.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-      menuOverlay.classList.toggle('active');
-      
-      if (nav.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    }
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    const navLinksItems = document.querySelectorAll('.nav-links a');
 
-    function closeMenu() {
-      const nav = document.getElementById('nav');
-      const menuToggle = document.getElementById('menuToggle');
-      const menuOverlay = document.getElementById('menuOverlay');
-      
-      nav.classList.remove('active');
-      menuToggle.classList.remove('active');
-      menuOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
-        closeMenu();
-      }
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      burger.classList.toggle('active');
+      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     });
 
-    document.addEventListener('touchmove', function(e) {
-      const nav = document.getElementById('nav');
-      if (nav.classList.contains('active') && !nav.contains(e.target)) {
-        e.preventDefault();
+    navLinksItems.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        burger.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 968) {
+        navLinks.classList.remove('active');
+        burger.classList.remove('active');
+        document.body.style.overflow = '';
       }
-    }, { passive: false });
+    });
 
     // Scroll animations
     const sections = document.querySelectorAll('.animated-section');
