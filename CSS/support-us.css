@@ -1,4 +1,5 @@
- * { 
+
+    * { 
       margin: 0; 
       padding: 0; 
       box-sizing: border-box; 
@@ -6,59 +7,46 @@
 
     body {
       font-family: Arial, sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
+                  url('../pictures & videos/481898803_122115556796774371_1149112215614248824_n.jpg') center/cover;
       background-color: #000;
+      background-attachment: fixed;
       color: #fff;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    /* NAVBAR */
+    /* HEADER */
     header {
-      position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      background-color: rgba(0,0,0,0.6);
-      padding: 10px 30px;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      color: white;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
       z-index: 1000;
-      box-shadow: 0 0 20px #00BFFF;
-      backdrop-filter: blur(5px);
-      animation: glowPulse 2.5s infinite alternate;
+      box-shadow: 0 2px 20px rgba(0, 191, 255, 0.3);
+    }
+
+    .header-left {
+      flex-shrink: 0;
     }
 
     header img { 
-      height: 60px; 
-      width: auto; 
+      height: 50px; 
+      width: auto;
+      display: block;
     }
-    
-    nav {
+
+    .header-right {
       display: flex;
       align-items: center;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
-
-    nav ul li a {
-      color: white; 
-      text-decoration: none; 
-      font-size: 1.1em; 
-      font-weight: bold;
-      padding: 10px 15px; 
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-
-    nav ul li a:hover { 
-      color: #00BFFF; 
-      text-shadow: 0 0 15px #00BFFF; 
     }
 
     /* Mobile menu toggle */
@@ -66,22 +54,65 @@
       display: none;
       flex-direction: column;
       cursor: pointer;
-      padding: 5px;
+      padding: 8px;
+      z-index: 1001;
     }
 
     .menu-toggle span {
-      width: 25px;
+      width: 28px;
       height: 3px;
       background-color: white;
-      margin: 2px 0;
+      margin: 3px 0;
       transition: 0.3s;
       border-radius: 2px;
     }
 
-    /* CONTENT PADDING */
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-6px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-6px, -6px);
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 8px 12px;
+      transition: all 0.3s;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    nav ul li a:hover {
+      color: #00BFFF;
+      background-color: rgba(0, 191, 255, 0.1);
+      text-shadow: 0 0 10px #00BFFF;
+    }
+
+    /* MAIN CONTENT */
     main { 
       flex: 1; 
-      margin-top: 90px; 
+      margin-top: 80px;
+      padding-bottom: 20px;
     }
 
     /* SECTIONS */
@@ -91,17 +122,20 @@
     }
 
     .support-section {
-      background: #111; 
+      background: rgba(17, 17, 17, 0.9);
+      backdrop-filter: blur(10px);
       border-radius: 10px; 
       margin: 20px auto;
       max-width: 1200px; 
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       padding: 40px 20px;
     }
 
     .support-section h1 { 
       font-size: 2.5em; 
-      margin-bottom: 20px; 
+      margin-bottom: 20px;
+      color: #00BFFF;
+      text-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
     }
 
     .support-section p { 
@@ -111,65 +145,53 @@
 
     /* BUTTONS */
     .btn {
-      background-color: #00bcd4; 
+      background: linear-gradient(135deg, #00bcd4, #0097a7);
       color: #fff;
-      padding: 12px 25px; 
-      border-radius: 5px; 
+      padding: 15px 35px; 
+      border-radius: 30px; 
       font-weight: bold;
+      font-size: 1.1em;
       text-decoration: none; 
-      margin: 0 10px; 
-      position: relative;
-      overflow: hidden; 
-      transition: all 0.3s ease;
       display: inline-block;
-    }
-
-    .btn::before {
-      content: ''; 
-      position: absolute; 
-      top: -50%; 
-      left: -50%;
-      width: 200%; 
-      height: 200%; 
-      background: rgba(0, 188, 212, 0.5);
-      transform: rotate(45deg); 
-      opacity: 0; 
-      transition: all 0.5s;
-    }
-
-    .btn:hover::before { 
-      opacity: 1; 
-      top: 0; 
-      left: 0; 
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
     }
 
     .btn:hover { 
-      background-color: #0097a7; 
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(0, 229, 255, 0.6);
     }
 
     /* SECTIONS STYLING */
-    .why-section, .benefits-section, .usage-section, .donation-section {
-      background: #fff; 
+    .why-section, .benefits-section, .usage-section {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       color: #000; 
       border-radius: 10px; 
       margin: 30px auto;
       max-width: 1200px; 
       padding: 40px 20px; 
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     h2 { 
       font-size: 2em; 
-      margin-bottom: 20px; 
+      margin-bottom: 20px;
+      color: #00BFFF;
+    }
+
+    .why-section h2, .benefits-section h2, .usage-section h2 {
+      color: #001f3f;
     }
 
     p { 
       max-width: 800px; 
       margin: 0 auto 20px; 
       line-height: 1.6; 
+      font-size: 1.05em;
     }
 
-    .benefits-list, .usage-list, .donation-options {
+    .benefits-list, .usage-list {
       display: flex; 
       flex-wrap: wrap; 
       justify-content: center; 
@@ -177,39 +199,61 @@
       margin-top: 20px;
     }
 
-    .benefits-item, .usage-item, .donation-option {
-      background: #f0f0f0; 
+    .benefits-item, .usage-item {
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
       color: #000; 
       padding: 20px; 
       width: 220px;
       border-radius: 10px; 
       text-align: center; 
       transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .benefits-item:hover, .usage-item:hover, .donation-option:hover {
+    .benefits-item:hover, .usage-item:hover {
       transform: translateY(-10px) scale(1.05); 
-      box-shadow: 0 15px 25px rgba(0,188,212,0.5);
+      box-shadow: 0 8px 25px rgba(0, 188, 212, 0.5);
     }
 
-    .usage-item img, .donation-image { 
+    .usage-item img { 
       max-width: 100%; 
-      height: auto; 
-      margin-bottom: 10px; 
-      border-radius: 5px; 
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 15px; 
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .usage-item p {
+      font-size: 0.95em;
+      margin: 8px 0;
+      font-weight: 500;
     }
 
     /* SOCIAL SECTION */
     .social-section { 
-      background: #111; 
-      padding: 40px 20px; 
+      background: rgba(0, 31, 63, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    .social-section h2 {
+      color: #00BFFF;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    .social-section p {
+      margin-bottom: 20px;
+      opacity: 0.9;
     }
 
     .social-icons { 
       display: flex; 
       justify-content: center; 
       gap: 15px; 
-      margin-top: 15px; 
+      flex-wrap: wrap;
     }
 
     .social-icons a {
@@ -218,13 +262,15 @@
       display: flex; 
       justify-content: center; 
       align-items: center;
-      background-color: #001f3f; 
+      background: linear-gradient(135deg, #001f3f, #003366);
       border-radius: 50%; 
-      transition: transform 0.3s;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .social-icons a:hover { 
-      animation: bounce 0.6s; 
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
     }
 
     .social-icons svg { 
@@ -241,18 +287,12 @@
       padding: 25px; 
     }
 
+    footer p {
+      margin: 0;
+      font-weight: bold;
+    }
+
     /* ANIMATIONS */
-    @keyframes bounce { 
-      0%,100%{transform:translateY(0);} 
-      50%{transform:translateY(-10px);} 
-    }
-
-    @keyframes glowPulse { 
-      0%{box-shadow:0 0 15px #00BFFF;} 
-      100%{box-shadow:0 0 35px #00BFFF;} 
-    }
-
-    /* FADE IN ON SCROLL */
     .animated-section { 
       opacity: 0; 
       transform: translateY(50px); 
@@ -264,17 +304,46 @@
       transform: translateY(0); 
     }
 
-    /* RESPONSIVE */
+    /* Overlay for mobile menu */
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .menu-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* ===============================
+       RESPONSIVE BREAKPOINTS
+       =============================== */
+
+    /* Tablets (≤1024px) */
     @media (max-width: 1024px) {
-      .benefits-item, .usage-item, .donation-option { 
+      .benefits-item, .usage-item { 
         width: 45%; 
       }
+      nav ul { gap: 15px; }
+      nav ul li a { font-size: 0.95em; }
     }
 
     /* Mobile (≤768px) */
     @media (max-width: 768px) {
       header {
-        padding: 10px 20px;
+        padding: 12px 15px;
+      }
+
+      header img {
+        height: 45px;
       }
 
       .menu-toggle {
@@ -282,28 +351,25 @@
       }
 
       nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: transparent;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 280px;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.98), rgba(0, 31, 63, 0.98));
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding-top: 80px;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
       }
 
       nav.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
+        transform: translateX(0);
       }
 
       nav ul {
         flex-direction: column;
-        padding: 20px 0;
         gap: 0;
-        align-items: flex-start;
         width: 100%;
       }
 
@@ -313,41 +379,51 @@
 
       nav ul li a {
         display: block;
-        padding: 15px 30px;
+        padding: 18px 30px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 1.1rem;
-      }
-
-      .benefits-item, .usage-item, .donation-option { 
-        width: 80%; 
-      }
-
-      main {
-        margin-top: 80px;
-      }
-    }
-
-    /* Small phones (≤600px) */
-    @media (max-width: 600px) {
-      header {
-        padding: 10px 15px;
-      }
-
-      header img {
-        height: 50px;
-      }
-
-      .menu-toggle span {
-        width: 22px;
+        font-size: 1.1em;
+        border-radius: 0;
       }
 
       main {
         margin-top: 70px;
       }
 
+      .benefits-item, .usage-item { 
+        width: 80%; 
+      }
+
+      section {
+        padding: 40px 15px;
+      }
+    }
+
+    /* Small phones (≤480px) */
+    @media (max-width: 480px) {
+      header {
+        padding: 10px 12px;
+      }
+
+      header img {
+        height: 40px;
+      }
+
+      .menu-toggle span {
+        width: 25px;
+      }
+
+      main {
+        margin-top: 60px;
+      }
+
+      nav {
+        width: 250px;
+        padding-top: 70px;
+      }
+
       nav ul li a {
-        font-size: 0.9em;
-        padding: 12px 25px;
+        padding: 15px 25px;
+        font-size: 1em;
       }
 
       .support-section h1 { 
@@ -359,7 +435,7 @@
       }
 
       .btn { 
-        padding: 10px 18px; 
+        padding: 12px 24px; 
         font-size: 0.95em; 
       }
 
@@ -375,19 +451,19 @@
         padding: 30px 15px;
       }
 
-      .support-section, .why-section, .benefits-section, .usage-section, .donation-section {
+      .support-section, .why-section, .benefits-section, .usage-section {
         margin: 20px 10px;
         padding: 30px 15px;
       }
 
-      .benefits-item, .usage-item, .donation-option {
+      .benefits-item, .usage-item {
         width: 100%;
         padding: 15px;
       }
 
       .social-icons a { 
-        width: 40px; 
-        height: 40px; 
+        width: 42px; 
+        height: 42px; 
       }
 
       .social-icons svg { 
@@ -396,10 +472,14 @@
       }
     }
 
-    /* Very small phones (≤400px) */
-    @media (max-width: 400px) {
+    /* Very small phones (≤360px) */
+    @media (max-width: 360px) {
       header img { 
-        height: 45px; 
+        height: 35px; 
+      }
+
+      nav {
+        width: 220px;
       }
 
       .support-section h1 {
@@ -415,13 +495,13 @@
       }
 
       .btn { 
-        padding: 8px 15px; 
-        font-size: 0.85em; 
+        padding: 10px 20px; 
+        font-size: 0.9em; 
       }
 
       .social-icons a {
-        width: 35px;
-        height: 35px;
+        width: 38px;
+        height: 38px;
       }
 
       .social-icons svg {
