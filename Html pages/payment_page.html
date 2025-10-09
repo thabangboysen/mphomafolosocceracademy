@@ -7,180 +7,190 @@
   <link rel="stylesheet" href="/CSS/payment.css">
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Complete Your Registration</h1>
-      <p>Secure Payment via PayFast - South Africa's Leading Payment Gateway</p>
+  <div class="payment-container">
+    <div class="payment-header">
+      <h1>🏆 Complete Registration</h1>
+      <p>Secure Payment Gateway</p>
     </div>
 
-    <div class="payment-content">
-      <!-- Order Summary -->
-      <div class="order-summary">
-        <h2>Payment Summary</h2>
-        
-        <div class="summary-item">
-          <span class="item-description">Registration Fee</span>
-          <span class="item-price">R800.00</span>
-        </div>
-        
-        <div class="summary-item">
-          <span class="item-description">Team Kit Included</span>
-          <span class="item-price">Included</span>
-        </div>
-        
-        <div class="summary-item total-item">
-          <span class="item-description">Total Amount</span>
-          <span class="item-price">R800.00</span>
-        </div>
+    <div class="player-info">
+      <h2>Registration Details</h2>
+      <div class="info-item">
+        <span class="info-label">Player Name:</span>
+        <span class="info-value" id="playerName">-</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Contact Email:</span>
+        <span class="info-value" id="contactEmail">-</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Contact Phone:</span>
+        <span class="info-value" id="contactPhone">-</span>
+      </div>
+    </div>
 
-        <div class="player-info">
-          <h3>Player Details</h3>
-          <div class="player-details">
-            <p><strong>Name:</strong> <span id="playerNameDisplay">Loading...</span></p>
-            <p><strong>Age Group:</strong> U11 (5-13 years)</p>
-            <p><strong>Training:</strong> Saturdays 09:00-11:00</p>
-            <p><strong>Venue:</strong> TUT eMalahleni Sports Field</p>
+    <div class="payment-summary">
+      <h3>Payment Summary</h3>
+      <div class="fee-breakdown">
+        <div class="fee-row">
+          <span>Registration Fee + Team Kit</span>
+          <span>R800.00</span>
+        </div>
+        <div class="fee-row">
+          <span>First Month Training Fee</span>
+          <span>R400.00</span>
+        </div>
+        <div class="fee-row">
+          <span>Total Amount Due</span>
+          <span>R1,200.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-methods">
+      <h3>Select Payment Method</h3>
+      <div class="payment-options">
+        <div class="payment-option" onclick="selectPaymentMethod('bank')">
+          <div class="payment-icon">🏦</div>
+          <div class="payment-details">
+            <h4>Bank Transfer / EFT</h4>
+            <p>Direct bank deposit or electronic transfer</p>
+          </div>
+        </div>
+        
+        <div class="payment-option" onclick="selectPaymentMethod('cash')">
+          <div class="payment-icon">💵</div>
+          <div class="payment-details">
+            <h4>Cash Payment</h4>
+            <p>Pay in person at training session</p>
           </div>
         </div>
       </div>
 
-      <!-- Payment Form -->
-      <div class="payment-form">
-        <div class="setup-notice">
-          <h3>⚙️ Setup Required</h3>
-          <p><strong>To enable real payments, complete these steps:</strong></p>
-          <ol>
-            <li>Sign up at <a href="https://www.payfast.co.za" target="_blank">payfast.co.za</a></li>
-            <li>Complete merchant verification (2-5 business days)</li>
-            <li>Get your Merchant ID and Merchant Key</li>
-            <li>Replace the placeholders in the code with your credentials</li>
-            <li>Set your passphrase in PayFast dashboard</li>
-          </ol>
-          <p style="margin-top:15px; font-weight:600; color:#92400E;">Once setup, this page will process real payments directly to your Capitec account (2016465480).</p>
-        </div>
-
-        <div class="form-section">
-          <h3>Payment Information</h3>
-          
-          <div class="payment-gateway-info">
-            <div class="gateway-logos">
-              <div class="gateway-logo">PayFast</div>
-              <div class="gateway-logo">Visa</div>
-              <div class="gateway-logo">Mastercard</div>
-              <div class="gateway-logo">EFT</div>
-            </div>
-            <p style="color:#1E40AF; font-weight:600; margin-bottom:10px;">Accepted Payment Methods:</p>
-            <p style="color:#475569; font-size:0.9rem; font-weight:500;">Credit/Debit Cards, Instant EFT, SnapScan, Zapper, and more</p>
-            <div class="security-badges">
-              <span class="badge">PCI-DSS Compliant</span>
-              <span class="badge">256-bit SSL</span>
-              <span class="badge">3D Secure</span>
-            </div>
+      <div class="banking-details" id="bankingDetails">
+        <h4>📋 Bank Account Details</h4>
+        <div class="bank-info">
+          <div class="bank-row">
+            <span class="bank-label">Bank Name:</span>
+            <span class="bank-value">FNB</span>
           </div>
+          <div class="bank-row">
+            <span class="bank-label">Account Name:</span>
+            <span class="bank-value">Mpho Mafolo Soccer Academy</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">Account Number:</span>
+            <span class="bank-value" id="accountNumber">62XXXXXXXX</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">Branch Code:</span>
+            <span class="bank-value">250655</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">Reference:</span>
+            <span class="bank-value" id="paymentReference">-</span>
+          </div>
+        </div>
+        
+        <p style="color: #92400e; font-size: 0.9rem; margin-bottom: 15px;">
+          ⚠️ <strong>Important:</strong> Please use your player's name as the payment reference
+        </p>
 
-          <form id="paymentForm" action="https://www.payfast.co.za/eng/process" method="POST">
-            <!-- PayFast Required Fields -->
-            <input type="hidden" name="merchant_id" value="YOUR_MERCHANT_ID">
-            <input type="hidden" name="merchant_key" value="YOUR_MERCHANT_KEY">
-            <input type="hidden" name="return_url" value="https://yourwebsite.com/payment-success.html">
-            <input type="hidden" name="cancel_url" value="https://yourwebsite.com/payment-cancelled.html">
-            <input type="hidden" name="notify_url" value="https://yourwebsite.com/payment-notify.php">
-            
-            <!-- Transaction Details -->
-            <input type="hidden" name="amount" value="800.00">
-            <input type="hidden" name="item_name" value="MMSA Registration Fee + Team Kit">
-            <input type="hidden" name="item_description" id="itemDescription" value="Registration for Player">
-            
-            <!-- Customer Details -->
-            <div class="form-group">
-              <label for="name_first">First Name *</label>
-              <input type="text" id="name_first" name="name_first" required>
-            </div>
-
-            <div class="form-group">
-              <label for="name_last">Last Name *</label>
-              <input type="text" id="name_last" name="name_last" required>
-            </div>
-
-            <div class="form-group">
-              <label for="email_address">Email Address *</label>
-              <input type="email" id="email_address" name="email_address" required>
-            </div>
-
-            <div class="form-group">
-              <label for="cell_number">Cell Number *</label>
-              <input type="tel" id="cell_number" name="cell_number" placeholder="0821234567" pattern="[0-9]{10}" required>
-            </div>
-
-            <!-- Hidden signature field - will be generated -->
-            <input type="hidden" name="signature" id="signature" value="">
-
-            <div class="security-notice">
-              <div class="security-icon">🔒</div>
-              <div class="security-text">
-                <strong>Your Payment is 100% Secure</strong>
-                <p>Processed by PayFast, South Africa's most trusted payment gateway. Your banking details are never stored on our servers. All transactions are encrypted and PCI-DSS compliant.</p>
-              </div>
-            </div>
-
-            <div class="payment-buttons">
-              <button type="button" class="btn-secondary" onclick="goBack()">Go Back</button>
-              <button type="submit" class="btn-primary">Pay R800.00 Now</button>
-            </div>
-          </form>
+        <div class="proof-upload">
+          <h4>Upload Proof of Payment</h4>
+          <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 15px;">
+            After making the payment, please upload your proof of payment below
+          </p>
+          <div class="file-upload-wrapper">
+            <input type="file" class="file-upload-input" id="proofOfPayment" accept="image/*,.pdf" onchange="handleFileUpload(this)">
+            <label for="proofOfPayment" class="file-upload-btn">
+              📎 Choose File (JPG, PNG, or PDF)
+            </label>
+          </div>
+          <p id="fileName" style="margin-top: 10px; color: #10b981; font-weight: 600;"></p>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Processing Modal -->
-  <div id="processingModal" class="processing-modal">
-    <div class="processing-content">
-      <div class="spinner"></div>
-      <h3>Redirecting to PayFast...</h3>
-      <p>Please wait while we redirect you to our secure payment gateway.</p>
+    <div class="success-message" id="successMessage">
+      ✅ Payment proof uploaded successfully! We'll verify your payment and contact you within 24 hours.
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn btn-secondary" onclick="goBack()">← Back</button>
+      <button class="btn btn-primary" id="submitBtn" onclick="submitPayment()">Submit Payment</button>
     </div>
   </div>
 
   <script>
-    // Load player name from URL or storage
-    window.addEventListener('load', function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const playerName = urlParams.get('player');
-      
-      if (playerName) {
-        document.getElementById('playerNameDisplay').textContent = playerName;
-        document.getElementById('itemDescription').value = 'MMSA Registration for ' + playerName;
-      } else {
-        document.getElementById('playerNameDisplay').textContent = 'New Player';
-      }
-    });
+    let selectedMethod = null;
+    let uploadedFile = null;
 
-    function goBack() {
-      if (confirm('Are you sure you want to go back? You will need to re-enter your details.')) {
-        window.history.back();
+    // Load player information from URL parameters
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const playerName = urlParams.get('player') || 'Not specified';
+      const email = urlParams.get('email') || 'Not provided';
+      const phone = urlParams.get('phone') || 'Not provided';
+
+      document.getElementById('playerName').textContent = playerName;
+      document.getElementById('contactEmail').textContent = email;
+      document.getElementById('contactPhone').textContent = phone;
+      document.getElementById('paymentReference').textContent = playerName;
+    };
+
+    function selectPaymentMethod(method) {
+      selectedMethod = method;
+      
+      // Remove selected class from all options
+      const options = document.querySelectorAll('.payment-option');
+      options.forEach(opt => opt.classList.remove('selected'));
+      
+      // Add selected class to clicked option
+      event.currentTarget.classList.add('selected');
+      
+      // Show/hide banking details
+      const bankingDetails = document.getElementById('bankingDetails');
+      if (method === 'bank') {
+        bankingDetails.classList.add('active');
+      } else {
+        bankingDetails.classList.remove('active');
       }
     }
 
-    // Handle form submission
-    document.getElementById('paymentForm').addEventListener('submit', function(e) {
-      // Show processing modal
-      document.getElementById('processingModal').style.display = 'block';
-      
-      // Note: In production, you would generate the signature server-side
-      // The signature is an MD5 hash of all the payment parameters
-      // For security, this MUST be done on your server, not in JavaScript
-      
-      // Form will submit to PayFast after a brief delay
-      setTimeout(function() {
-        // Form submits naturally to PayFast
-      }, 1000);
-    });
+    function handleFileUpload(input) {
+      if (input.files && input.files[0]) {
+        uploadedFile = input.files[0];
+        document.getElementById('fileName').textContent = '✓ File selected: ' + uploadedFile.name;
+      }
+    }
 
-    // Format phone number
-    document.getElementById('cell_number').addEventListener('input', function(e) {
-      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
-    });
+    function submitPayment() {
+      if (!selectedMethod) {
+        alert('Please select a payment method');
+        return;
+      }
+
+      if (selectedMethod === 'bank' && !uploadedFile) {
+        alert('Please upload your proof of payment');
+        return;
+      }
+
+      // Show success message
+      document.getElementById('successMessage').classList.add('active');
+      
+      // Simulate sending data (in real implementation, this would send to your backend)
+      setTimeout(() => {
+        alert('Thank you! Your registration has been submitted successfully.\n\nWe will verify your payment and contact you within 24 hours.\n\nFor urgent queries, contact:\nKholofelo - 068 698 4744\nEmail: infosocceracademy00@gmail.com');
+        
+        // Redirect back to home page
+        window.location.href = '/index.html';
+      }, 2000);
+    }
+
+    function goBack() {
+      window.history.back();
+    }
   </script>
 </body>
 </html>

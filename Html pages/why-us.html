@@ -356,8 +356,7 @@
       closeRegistrationModal();
       
       // Redirect to payment page with player details
-      wwindow.location.assign('payment.html');
-
+      window.location.href = `payment.html?player=${encodeURIComponent(playerName)}&email=${encodeURIComponent(guardianEmail)}&phone=${encodeURIComponent(guardianPhone)}`;
     }
   </script>
 
